@@ -4,10 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Add = () => {
   const [book, setBook] = useState({
-    title: "",
-    desc: "",
-    price: null,
-    cover: "",
+    item: "",
+    owner: "",
+    location: "",
+    value: null,
   });
 
   const [error, setError] = useState(false);
@@ -36,27 +36,27 @@ const Add = () => {
       <h1>Add New Book</h1>
       <input
         type="text"
-        placeholder="title"
+        placeholder="item"
         onChange={handleChange}
-        name="title"
+        name="item"
       />
       <input
         type="text"
-        placeholder="desc"
+        placeholder="owner"
         onChange={handleChange}
-        name="desc"
+        name="owner"
+      />
+      <input
+        type="text"
+        placeholder="location"
+        onChange={handleChange}
+        name="location"
       />
       <input
         type="number"
-        placeholder="price"
+        placeholder="value"
         onChange={handleChange}
-        name="price"
-      />
-      <input
-        type="text"
-        placeholder="cover"
-        onChange={handleChange}
-        name="cover"
+        name="value"
       />
       <button onClick={handleClick}>Add</button>
     </div>

@@ -1,59 +1,156 @@
-.app {
-  height: 100vh;
-  padding: 0 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+/* Reset default margin and padding */
+body,
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-.books {
-  display: flex;
-}
-
-.book {
-  flex: 1;
+/* Main container */
+.listContainer {
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   align-items: center;
+  background-color: #f4f4f4;
+  min-height: 100vh;
 }
-img {
-  width: 200px;
-  height: 300px;
-  object-fit: cover;
-  background-color: aquamarine;
+
+/* List styling */
+.list {
+  width: 100%;
+  max-width: 850px;
 }
-.delete {
+
+/* Title section styling */
+.title {
+  display: flex;
+  gap: 80px;
+  width: 100%;
+  padding: 15px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.title > p {
+  padding: 10px;
+  margin: 0;
+}
+
+/* List item styling */
+.listItem,
+.listItem2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin: 5px 0;
+  background-color: rgba(209, 31, 31, 0.425);
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Alternate background color for even rows */
+.listItem2 {
+  background-color: rgba(221, 106, 106, 0.425);
+}
+
+.listItem:hover,
+.listItem2:hover {
+  background-color: rgba(209, 31, 31, 0.7);
+}
+
+/* Aligning text inside list items */
+.listItem > p,
+.listItem2 > p {
+  width: 150px;
+  text-align: left;
+  margin: 0;
+}
+
+/* Button styling */
+.button {
+  background-color: rgb(151, 163, 38);
+  color: white;
   border: none;
-  padding: 3px 6px;
-  background-color: white;
+  padding: 10px 15px;
+  margin: 0 5px;
   cursor: pointer;
-  border: 1px solid rgb(245, 191, 191);
-  color: rgb(26, 10, 121);
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
-.update {
+
+.button:hover {
+  background-color: rgb(75, 82, 20);
+}
+
+/* Styling for links inside buttons */
+.button a {
+  color: white;
+  text-decoration: none;
+}
+
+.button a:hover {
+  text-decoration: underline;
+}
+
+/* Add item button */
+button > a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: blue;
+  color: white;
   border: none;
-  padding: 3px 6px;
-  background-color: white;
+  border-radius: 5px;
+  margin-top: 20px;
   cursor: pointer;
-  border: 1px solid rgb(79, 22, 235);
-  color: rgb(50, 18, 226);
+  font-size: 16px;
 }
+
+button:hover {
+  background-color: darkblue;
+}
+
+/* Form section */
 .form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
 }
+
 input {
-  width: 250px;
+  width: 100%;
   padding: 10px;
   border: 1px solid grey;
+  border-radius: 5px;
 }
+
 .formButton {
   border: none;
   padding: 10px;
   background-color: blue;
-  color: black;
+  color: white;
   font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formButton:hover {
+  background-color: darkblue;
 }

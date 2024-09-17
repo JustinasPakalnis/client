@@ -1,0 +1,10 @@
+.headerCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  text-align: center;
+  height: 50px;
+  margin-bottom: 20px;
+}
