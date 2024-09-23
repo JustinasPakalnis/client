@@ -4,6 +4,7 @@ import List from "./pages/List";
 import Update from "./pages/Update";
 import "./style.css";
 import Header from "./pages/Header";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <BrowserRouter>
         <Header></Header>
         <Routes>
-          <Route path="/" element={<List />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/main" element={<List />} />
           <Route path="/add" element={<Add />} />
           <Route path="/update/:id" element={<Update />} />
         </Routes>

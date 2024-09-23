@@ -26,7 +26,7 @@ const Update = () => {
     e.preventDefault();
     try {
       await axios.put("http://localhost:8800/books/" + bookId, book);
-      navigate("/");
+      navigate("/main");
     } catch (err) {
       console.log(err);
       setError(true);
@@ -35,7 +35,7 @@ const Update = () => {
 
   return (
     <div className="form">
-      <h1>Update selected book</h1>
+      <h1>Update selected Item</h1>
       <input
         type="text"
         placeholder="item"

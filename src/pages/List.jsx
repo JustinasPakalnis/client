@@ -4,18 +4,19 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 const List = () => {
   const [items, setItems] = useState([]);
+
+  const fetchAllItems = async () => {
+    try {
+      const res = await axios.get("http://localhost:8800/books");
+      setItems(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    const fetchAllItems = async () => {
-      try {
-        const res = await axios.get("http://localhost:8800/books");
-        setItems(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchAllItems();
   }, []);
-  console.log(items);
 
   const handleDelete = async (id) => {
     try {
@@ -41,8 +42,8 @@ const List = () => {
           <div className="summary">
             <p>Total warehouse value: </p>
             <p>
-              {items.reduce((acc, currentItem) => acc + currentItem.value, 0)}{" "}
-              Eur
+              {items.reduce((acc, currentItem) => acc + currentItem.value, 0)}
+              {` Eur`}
             </p>
           </div>
         </div>

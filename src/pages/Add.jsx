@@ -24,7 +24,7 @@ const Add = () => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:8800/books", book);
-      navigate("/");
+      navigate("/main");
     } catch (err) {
       console.log(err);
       setError(true);
@@ -33,7 +33,7 @@ const Add = () => {
 
   return (
     <div className="form">
-      <h1>Add New Book</h1>
+      <h1>Add New Item</h1>
       <input
         type="text"
         placeholder="item"
