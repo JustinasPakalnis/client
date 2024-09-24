@@ -3,54 +3,63 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [login, setLogin] = useState("Admin");
-  const [password, setPassword] = useState("Admin");
-  const [userLogin, seUserLogin] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState(null);
+  const [errMsg, setErrMsg] = useState(null);
 
   const navigate = useNavigate();
 
-  const handleChangeLogin = (e) => {
-    seUserLogin(e.target.value);
-  };
-  console.log(userLogin);
-  const handleChangePassword = (e) => {
-    setUserPassword(e.target.value);
-  };
-  console.log(userPassword);
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-  function loginClick() {
-    if (userLogin === login && userPassword === password) {
-      navigate("/main");
-      console.log("Geri prisijungimo duomenys");
-    } else {
-      alert("Blogi prisijungimo duomenys");
+    try {
+      const response = await axios.post("http://localhost:8800/api/login", {
+        username: username,
+        password: password,
+      });
+
+      console.log("Full response:", response);
+      console.log("Login status:", response.data.message);
+      console.log("User details:", response.data.user);
+
+      if (response.data.message === "Login approved") {
+        navigate("/main");
+      }
+      if (response.data.message === "Login denied, incorrect password") {
+        setMessage("LOGIN HAS BEEN DENIED!");
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      }
+    } catch (error) {
+      console.error("Login error:", error);
     }
-  }
+  };
+
   return (
-    <div className="login">
-      <h2>Please login to enter site</h2>
-      <span>
-        <p>User login </p>
+    <form className="login" onSubmit={handleLogin}>
+      <div>
+        <label>Username: </label>
         <input
           type="text"
-          placeholder="Enter LOGIN"
-          value={userLogin}
-          onChange={handleChangeLogin}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
         />
-      </span>
-      <span>
-        <p>User Password</p>
+      </div>
+      <div>
+        <label>Password: </label>
         <input
           type="password"
-          placeholder="Enter password"
-          value={userPassword}
-          onChange={handleChangePassword}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
         />
-      </span>
-
-      <button onClick={loginClick}>LOGIN</button>
-    </div>
+      </div>
+      <button type="submit">Login</button>
+      <p className="message">{message}</p>
+    </form>
   );
 };
 

@@ -167,3 +167,9 @@ input {
   flex-direction: column;
   gap: 2rem;
 }
+
+.message {
+  text-align: center;
+  font-weight: bold;
+  color: red;
+}
